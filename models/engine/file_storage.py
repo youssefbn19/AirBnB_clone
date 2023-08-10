@@ -18,7 +18,7 @@ class FileStorage:
         Returns the private class attribute "objects"
         """
         return (FileStorage.__objects)
-        
+
     def new(self, obj):
         """
         Add a given object to the dictionary __objects
