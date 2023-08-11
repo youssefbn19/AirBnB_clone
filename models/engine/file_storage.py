@@ -2,7 +2,14 @@
 """
 The module contains FileStorage class
 """
+from models.amenity import Amenity
+from models.base_model import BaseModel
+from models.city import City
 from json import load, dump
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 
 
 class FileStorage:
@@ -35,7 +42,7 @@ class FileStorage:
         insstances = FileStorage.__objects
         insstances_dict = {key: insstances[key].to_dict() for key in insstances.keys()}
         with open(FileStorage.__file_path, "w") as file:
-            dump(insstances_dict, file)
+            dump(insstances_dict, file, indent=4)
 
     def reload(self):
         """
@@ -44,7 +51,6 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, "r") as file:
                 inst = load(file)
-                from models.base_model import BaseModel
                 for key, value in inst.items():
                     class_name, obj_id = key.split('.')
                     # inst[key]['__class__'] = class_name
