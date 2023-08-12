@@ -3,9 +3,15 @@
 The module contains HBNBCommand class
 """
 import cmd
-from models.base_model import BaseModel
 import models
 import ast
+from models.base_model import BaseModel
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 
 
 class HBNBCommand(cmd.Cmd):
@@ -13,7 +19,8 @@ class HBNBCommand(cmd.Cmd):
     The entry point of the command interpreter
     """
     prompt = '(hbnb) '
-    __classes = ["BaseModel"]
+    __classes = ["BaseModel", "Amenity", "City", "Place",
+                 "Review", "State", "User"]
 
     def command_args(self, line):
         """
