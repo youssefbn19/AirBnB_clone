@@ -19,7 +19,7 @@ class BaseModel:
         kwargs.pop('__class__', None)
         self.created_at = datetime.now()
         self.updated_at = datetime.now()
-        if (len(kwargs)):
+        if kwargs:
             for key, value in kwargs.items():
                 if (key not in ['created_at', 'updated_at']):
                     self.__dict__[key] = value

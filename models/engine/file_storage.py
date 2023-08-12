@@ -2,8 +2,8 @@
 """
 The module contains FileStorage class
 """
-from json import load, dump
-
+from json import load, dump, JSONDecodeError
+from models.base_model import BaseModel
 
 class FileStorage:
     """
@@ -35,7 +35,7 @@ class FileStorage:
         insstances = FileStorage.__objects
         insstances_dict = {key: insstances[key].to_dict() for key in insstances.keys()}
         with open(FileStorage.__file_path, "w") as file:
-            dump(insstances_dict, file)
+            dump(insstances_dict, file, indent=4, sort_keys=True)
 
     def reload(self):
         """
@@ -44,12 +44,11 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, "r") as file:
                 inst = load(file)
-                from models.base_model import BaseModel
                 for key, value in inst.items():
                     class_name, obj_id = key.split('.')
                     # inst[key]['__class__'] = class_name
                     cls = eval(class_name)
                     obj = cls(**value)
                     FileStorage.__objects[key] = obj
-        except FileNotFoundError:
+        except (FileNotFoundError, JSONDecodeError):
             pass
