@@ -55,8 +55,6 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, line):
         "Creates a new instance of given class."
-        #line = self.clean_line(line)
-        #inst = self.command_args(line)
         args = self.command_args(line)
         if args:
             instance = eval(args[0])()
