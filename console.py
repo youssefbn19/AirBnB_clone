@@ -45,9 +45,14 @@ class HBNBCommand(cmd.Cmd):
             clean_line = ' '.join(clean_line)
         return clean_line
 
+    def emptyline(self):
+        """this function does nothing when pressing
+        empty line"""
+        pass
+
     def do_EOF(self, line):
         'Exit the program'
-        print()
+        print("")
         return True
 
     def do_quit(self, line):
