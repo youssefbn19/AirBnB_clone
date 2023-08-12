@@ -26,14 +26,16 @@ class HBNBCommand(cmd.Cmd):
         """
         Check if the command arguments follow a certain instructions.
         """
+        line = self.clean_line(line)
+        args = []
         if line:
-            if line not in HBNBCommand.__classes:
+            args = line.split()
+            if args[0] not in HBNBCommand.__classes:
                 print("** class doesn't exist **")
-            else:
-                return True
+                return []
         else:
             print("** class name missing **")
-        return False
+        return args
 
     def clean_line(self, line):
         "Clean a line from trailing spaces (whitespace, tabs, newline)"
@@ -53,11 +55,11 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, line):
         "Creates a new instance of given class."
-        line = self.clean_line(line)
-        print(line)
-        inst = self.command_args(line)
-        if inst:
-            instance = eval(line)()
+        #line = self.clean_line(line)
+        #inst = self.command_args(line)
+        args = self.command_args(line)
+        if args:
+            instance = eval(args[0])()
             instance.save()
             print(instance.id)
 
@@ -66,10 +68,8 @@ class HBNBCommand(cmd.Cmd):
         Prints the string representation of an instance
         based on the class name.
         """
-        line = self.clean_line(line)
-        args = line.split()
-        check_args = self.command_args(args[0])
-        if check_args:
+        args = self.command_args(line)
+        if args:
             if len(args) <= 1:
                 print("** instance id missing **")
             else:
@@ -82,10 +82,8 @@ class HBNBCommand(cmd.Cmd):
 
     def do_destroy(self, line):
         'Deletes an instance based on the class name and id.'
-        line = self.clean_line(line)
-        args = line.split()
-        check_args = self.command_args(args[0])
-        if check_args:
+        args = self.command_args(line)
+        if args:
             if len(args) <= 1:
                 print("** instance id missing **")
             else:
@@ -102,15 +100,15 @@ class HBNBCommand(cmd.Cmd):
         Prints all string representation of
         all instances based or not on the class name.
         """
-        line = self.clean_line(line)
         objs = models.storage.all()
         if line:
-            cls_exists = any(key.startswith(line) for key in objs)
-            if cls_exists:
-                inst_list = [str(value) for key, value in objs.items()
-                             if key.startswith(line)]
+            args= self.command_args(line)
+            if args:
+                cls_exists = any(key.startswith(args[0]) for key in objs)
+                if cls_exists:
+                    inst_list = [str(value) for key, value in objs.items()
+                                 if key.startswith(args[0])]
             else:
-                print("** class doesn't exist **")
                 return
         else:
             inst_list = [str(objs[key]) for key in objs]
@@ -121,11 +119,9 @@ class HBNBCommand(cmd.Cmd):
         Updates an instance based on the class name and id by
         adding or updating attribute
         """
-        line = self.clean_line(line)
-        args = line.split()
-        check_args = self.command_args(args[0])
+        args = self.command_args(line)
         objs = models.storage.all()
-        if check_args:
+        if args:
             if len(args) <= 1:
                 print("** instance id missing **")
             elif "{}.{}".format(args[0], args[1]) not in objs.keys():
