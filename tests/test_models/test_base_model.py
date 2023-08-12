@@ -5,6 +5,7 @@
 """
 import unittest
 import models
+from models import storage
 from models.base_model import BaseModel
 from datetime import datetime
 
@@ -17,6 +18,10 @@ class TestBaseModel(unittest.TestCase):
 
     def test_id_type(self):
         self.assertEqual(str, type(self.inst.id))
+
+    def test_unique_id(self):
+        instr = BaseModel()
+        self.assertNotEqual(instr.id, self.inst.id)
 
     def test_created_at(self):
         self.assertEqual(datetime, type(self.inst.created_at))
@@ -45,10 +50,11 @@ class TestBaseModel(unittest.TestCase):
         self.assertTrue(hasattr(inst, "name"))
         self.assertEqual(inst.name, "hamza")
 
-    def test_no_args(self):
+    def test_no_args_and_with(self):
         inst = BaseModel(None)
         self.assertNotIn(None, inst.__dict__.values())
         self.assertEqual(BaseModel, type(BaseModel()))
+        self.assertIn(BaseModel(), storage.all().values())
 
     def test_check_id(self):
         insttest = BaseModel()
@@ -126,15 +132,15 @@ class TestBaseModel(unittest.TestCase):
     def test_save(self):
         inst_update = self.inst.updated_at
         self.inst.save()
-        self.assertNotEqual(inst_update, self.inst.updated_at)
+        self.assertLess(inst_update, self.inst.updated_at)
 
     def test_save_n(self):
         inst_updated_at = self.inst.updated_at
         self.inst.save()
-        self.assertNotEqual(inst_updated_at, self.inst.updated_at)
+        self.assertLess(inst_updated_at, self.inst.updated_at)
         after_save_n_one = self.inst.updated_at
         self.inst.save()
-        self.assertNotEqual(after_save_n_one, self.inst.updated_at)
+        self.assertLess(after_save_n_one, self.inst.updated_at)
 
     def test_save_with_no_args(self):
         with self.assertRaises(TypeError):
