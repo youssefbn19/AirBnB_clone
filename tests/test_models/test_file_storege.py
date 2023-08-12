@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """
 test the edge cases from the filestorage class"""
-
 from models.engine.file_storage import FileStorage
 from json import load, dump
 from models.base_model import BaseModel
@@ -53,7 +52,7 @@ class TestFileStorage(unittest.TestCase):
         self.assertEqual(type(storage.all()), dict)
         self.assertIs(objects, self.inst._FileStorage__objects)
 
-    def test_all_with_no_attr(self):    
+    def test_all_with_no_attr(self):
         with self.assertRaises(TypeError):
             storage.all(None)
 
@@ -72,9 +71,9 @@ class TestFileStorage(unittest.TestCase):
         self.assertIn("BaseModel." + inst.id, storage.all().keys())
 
     def test_new_method_User(self):
-            inst = User()
-            storage.new(inst)
-            self.assertIn("User." + inst.id, storage.all().keys())
+        inst = User()
+        storage.new(inst)
+        self.assertIn("User." + inst.id, storage.all().keys())
 
     def test_new_method_place(self):
         inst = Place()
@@ -178,7 +177,7 @@ class TestFileStorage(unittest.TestCase):
         storage.save()
         storage.reload()
         objects_list = FileStorage._FileStorage__objects
-        key = '{}.{}'.format(inst.__class__.__name__,inst.id)
+        key = '{}.{}'.format(inst.__class__.__name__, inst.id)
         self.assertIn(key, objects_list)
 
     def test_reload_with_user(self):
@@ -187,7 +186,7 @@ class TestFileStorage(unittest.TestCase):
         storage.save()
         storage.reload()
         objects_list = FileStorage._FileStorage__objects
-        key = '{}.{}'.format(inst.__class__.__name__,inst.id)
+        key = '{}.{}'.format(inst.__class__.__name__, inst.id)
         self.assertIn(key, objects_list)
 
     def test_reload_with_Place(self):
@@ -196,7 +195,7 @@ class TestFileStorage(unittest.TestCase):
         storage.save()
         storage.reload()
         objects_list = FileStorage._FileStorage__objects
-        key = '{}.{}'.format(inst.__class__.__name__,inst.id)
+        key = '{}.{}'.format(inst.__class__.__name__, inst.id)
         self.assertIn(key, objects_list)
 
     def test_reload_with_State(self):
@@ -205,7 +204,7 @@ class TestFileStorage(unittest.TestCase):
         storage.save()
         storage.reload()
         objects_list = FileStorage._FileStorage__objects
-        key = '{}.{}'.format(inst.__class__.__name__,inst.id)
+        key = '{}.{}'.format(inst.__class__.__name__, inst.id)
         self.assertIn(key, objects_list)
 
     def test_reload_with_city(self):
@@ -214,7 +213,7 @@ class TestFileStorage(unittest.TestCase):
         storage.save()
         storage.reload()
         objects_list = FileStorage._FileStorage__objects
-        key = '{}.{}'.format(inst.__class__.__name__,inst.id)
+        key = '{}.{}'.format(inst.__class__.__name__, inst.id)
         self.assertIn(key, objects_list)
 
     def test_reload_with_amenity(self):
@@ -223,7 +222,7 @@ class TestFileStorage(unittest.TestCase):
         storage.save()
         storage.reload()
         objects_list = FileStorage._FileStorage__objects
-        key = '{}.{}'.format(inst.__class__.__name__,inst.id)
+        key = '{}.{}'.format(inst.__class__.__name__, inst.id)
         self.assertIn(key, objects_list)
 
     def test_reload_with_review(self):
@@ -232,8 +231,9 @@ class TestFileStorage(unittest.TestCase):
         storage.save()
         storage.reload()
         objects_list = FileStorage._FileStorage__objects
-        key = '{}.{}'.format(inst.__class__.__name__,inst.id)
+        key = '{}.{}'.format(inst.__class__.__name__, inst.id)
         self.assertIn(key, objects_list)
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     unittest.main()

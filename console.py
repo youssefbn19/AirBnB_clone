@@ -100,7 +100,7 @@ class HBNBCommand(cmd.Cmd):
         """
         objs = models.storage.all()
         if line:
-            args= self.command_args(line)
+            args = self.command_args(line)
             if args:
                 cls_exists = any(key.startswith(args[0]) for key in objs)
                 if cls_exists:

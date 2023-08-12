@@ -107,7 +107,8 @@ class TestReview(unittest.TestCase):
         inst_dict = self.inst.to_dict()
         self.assertIsInstance(inst_dict, dict)
         self.assertEqual(inst_dict['__class__'], "Review")
-        self.assertEqual(inst_dict['text'], "great appartment, with a nice view")
+        self.assertEqual(inst_dict['text'],
+                         "great appartment, with a nice view")
         self.assertEqual(inst_dict['place_id'], 'iuew88803')
         self.assertEqual(inst_dict['user_id'], 'user_8u93ied')
 
@@ -146,7 +147,7 @@ class TestReview(unittest.TestCase):
             with open("file.json", "r") as file:
                 format_inst = "Review." + self.inst.id
                 self.assertIn(format_inst, file.read())
-        except(FileNotFoundError):
+        except (FileNotFoundError):
             pass
 
     def test_save(self):

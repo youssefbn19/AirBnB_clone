@@ -132,7 +132,7 @@ class TestUser(unittest.TestCase):
             with open("file.json", "r") as file:
                 format_inst = "User." + self.inst.id
                 self.assertIn(format_inst, file.read())
-        except(FileNotFoundError):
+        except (FileNotFoundError):
             pass
 
     def test_save(self):
