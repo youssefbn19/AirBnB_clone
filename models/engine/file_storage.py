@@ -2,7 +2,14 @@
 """
 The module contains FileStorage class
 """
-from json import load, dump
+from json import load, dump, JSONDecodeError
+from models.base_model import BaseModel
+from models.amenity import Amenity
+from models.city import City
+from models.place import Place
+from models.review import Review
+from models.state import State
+from models.user import User
 
 
 class FileStorage:
@@ -10,8 +17,8 @@ class FileStorage:
     The class is responsible for serializes instances to a JSON file
     and deserializes JSON file to instances
     """
-    __file_path='file.json'
-    __objects={}
+    __file_path = 'file.json'
+    __objects = {}
 
     def all(self):
         """
@@ -25,7 +32,7 @@ class FileStorage:
         """
         inst = obj.__class__.__name__
         idO = obj.id
-        key = str(inst)+ '.' + str(idO)
+        key = "{}.{}".format(inst, idO)
         FileStorage.__objects[key] = obj
 
     def save(self):
@@ -33,9 +40,10 @@ class FileStorage:
         Serializes __objects attribute to the JSON file
         """
         insstances = FileStorage.__objects
-        insstances_dict = {key: insstances[key].to_dict() for key in insstances.keys()}
+        insstances_dict = {key: insstances[key].to_dict()
+                           for key in insstances.keys()}
         with open(FileStorage.__file_path, "w") as file:
-            dump(insstances_dict, file)
+            dump(insstances_dict, file, indent=4, sort_keys=True)
 
     def reload(self):
         """
@@ -44,12 +52,11 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, "r") as file:
                 inst = load(file)
-                from models.base_model import BaseModel
                 for key, value in inst.items():
                     class_name, obj_id = key.split('.')
                     # inst[key]['__class__'] = class_name
                     cls = eval(class_name)
                     obj = cls(**value)
                     FileStorage.__objects[key] = obj
-        except FileNotFoundError:
+        except (FileNotFoundError, JSONDecodeError):
             pass
