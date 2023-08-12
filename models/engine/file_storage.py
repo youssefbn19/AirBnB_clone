@@ -5,13 +5,14 @@ The module contains FileStorage class
 from json import load, dump, JSONDecodeError
 from models.base_model import BaseModel
 
+
 class FileStorage:
     """
     The class is responsible for serializes instances to a JSON file
     and deserializes JSON file to instances
     """
-    __file_path='file.json'
-    __objects={}
+    __file_path = 'file.json'
+    __objects = {}
 
     def all(self):
         """
@@ -25,7 +26,7 @@ class FileStorage:
         """
         inst = obj.__class__.__name__
         idO = obj.id
-        key = str(inst)+ '.' + str(idO)
+        key = "{}.{}".format(inst, idO)
         FileStorage.__objects[key] = obj
 
     def save(self):
@@ -33,7 +34,8 @@ class FileStorage:
         Serializes __objects attribute to the JSON file
         """
         insstances = FileStorage.__objects
-        insstances_dict = {key: insstances[key].to_dict() for key in insstances.keys()}
+        insstances_dict = {key: insstances[key].to_dict()
+                           for key in insstances.keys()}
         with open(FileStorage.__file_path, "w") as file:
             dump(insstances_dict, file, indent=4, sort_keys=True)
 

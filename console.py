@@ -1,4 +1,7 @@
 #!/usr/bin/python3
+"""
+The module contains HBNBCommand class
+"""
 import cmd
 from models.base_model import BaseModel
 import models
@@ -6,17 +9,20 @@ import ast
 
 
 class HBNBCommand(cmd.Cmd):
+    """
+    The entry point of the command interpreter
+    """
     prompt = '(hbnb) '
     __classes = ["BaseModel"]
-    
+
     def command_args(self, line):
         """
         Check if the command arguments follow a certain instructions.
         """
         if line:
-             if line not in HBNBCommand.__classes:
+            if line not in HBNBCommand.__classes:
                 print("** class doesn't exist **")
-             else:
+            else:
                 return True
         else:
             print("** class name missing **")
@@ -30,11 +36,10 @@ class HBNBCommand(cmd.Cmd):
             clean_line = ' '.join(clean_line)
         return clean_line
 
-
     def do_EOF(self, line):
         'Exit the program'
         return True
-    
+
     def do_quit(self, line):
         'Exit the program.'
         return True
@@ -48,7 +53,7 @@ class HBNBCommand(cmd.Cmd):
             instance = eval(line)()
             instance.save()
             print(instance.id)
-                
+
     def do_show(self, line):
         """
         Prints the string representation of an instance
@@ -99,7 +104,7 @@ class HBNBCommand(cmd.Cmd):
                              if key.startswith(line)]
             else:
                 print("** class doesn't exist **")
-                return                
+                return
         else:
             inst_list = [str(objs[key]) for key in objs]
         print(inst_list)
@@ -132,6 +137,7 @@ class HBNBCommand(cmd.Cmd):
                     instance = objs["{}.{}".format(args[0], args[1])]
                     instance.__dict__[args[2]] = value
                     instance.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()

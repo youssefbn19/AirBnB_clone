@@ -32,7 +32,8 @@ class BaseModel:
         """
         Returns string representation of an instance
         """
-        return ("[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__))
+        return ("[{}] ({}) {}".format(self.__class__.__name__, self.id,
+                                      self.__dict__))
 
     def save(self):
         """
@@ -51,4 +52,3 @@ class BaseModel:
         instance_dict['created_at'] = self.created_at.isoformat()
         instance_dict['updated_at'] = self.updated_at.isoformat()
         return (instance_dict)
-
