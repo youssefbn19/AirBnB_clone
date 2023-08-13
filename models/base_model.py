@@ -16,10 +16,10 @@ class BaseModel:
         Initialization method
         """
         self.id = str(uuid.uuid4())
-        kwargs.pop('__class__', None)
         self.created_at = datetime.now()
         self.updated_at = self.created_at
         if kwargs:
+            kwargs.pop('__class__', None)
             for key, value in kwargs.items():
                 if (key not in ['created_at', 'updated_at']):
                     self.__dict__[key] = value

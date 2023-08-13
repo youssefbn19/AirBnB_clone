@@ -42,8 +42,8 @@ class FileStorage:
         insstances = FileStorage.__objects
         insstances_dict = {key: insstances[key].to_dict()
                            for key in insstances.keys()}
-        with open(FileStorage.__file_path, "w") as file:
-            dump(insstances_dict, file, indent=4, sort_keys=True)
+        with open(FileStorage.__file_path, "w", encoding="utf-8") as file:
+            dump(insstances_dict, file)
 
     def reload(self):
         """
@@ -53,8 +53,7 @@ class FileStorage:
             with open(FileStorage.__file_path, "r") as file:
                 inst = load(file)
                 for key, value in inst.items():
-                    class_name, obj_id = key.split('.')
-                    # inst[key]['__class__'] = class_name
+                    class_name = inst[key]["__class__"]
                     cls = eval(class_name)
                     obj = cls(**value)
                     FileStorage.__objects[key] = obj
