@@ -5,6 +5,6 @@ from models.base_model import BaseModel
 
 class State(BaseModel):
     """definition of class state has one attr is name
-    Attr : 
+    Attr :
     name (str): state name"""
     name = ""
