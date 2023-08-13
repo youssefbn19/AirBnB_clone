@@ -41,6 +41,23 @@ class HBNBCommand(cmd.Cmd):
             elif args[1] == "destroy":
                 key = "{} {}".format(args[0], args[2].replace("\"", ""))
                 self.do_destroy(key)
+            elif args[1] == "update":
+                reg_update = r"\"(.+?)\", (.+)"
+                new_att_val = re.match(reg_update, args[2])
+                if new_att_val.groups()[1][0] != '{':
+                    attr_val = new_att_val.groups()[1].replace('"', "") \
+                        .rsplit(", ")
+                    attr_to_updt = '{} {} {} {}' \
+                        .format(args[0], new_att_val.groups()[0],
+                                attr_val[0], attr_val[1])
+                    self.do_update(attr_to_updt)
+                else:
+                    val_dict = eval(new_att_val.groups()[1])
+                    for key, value in val_dict.items():
+                        attr_to_updt = '{} {} {} {}' \
+                            .format(args[0], new_att_val.groups()[0],
+                                    key, str(value))
+                        self.do_update(attr_to_updt)
         else:
             super().default(line)
 
