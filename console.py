@@ -66,6 +66,10 @@ class HBNBCommand(cmd.Cmd):
             clean_line = ' '.join(clean_line)
         return clean_line
 
+    def emptyline(self):
+        """handle new lines"""
+        pass
+
     def do_EOF(self, line):
         'Exit the program'
         print("")
