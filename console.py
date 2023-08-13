@@ -38,7 +38,9 @@ class HBNBCommand(cmd.Cmd):
             elif args[1] == "show":
                 key = "{} {}".format(args[0], args[2].replace("\"", ""))
                 self.do_show(key)
-                # self.show(args[0], args[2])
+            elif args[1] == "destroy":
+                key = "{} {}".format(args[0], args[2].replace("\"", ""))
+                self.do_destroy(key)
         else:
             super().default(line)
 
@@ -50,7 +52,6 @@ class HBNBCommand(cmd.Cmd):
         args = []
         if line:
             args = line.split()
-            print("coolab {}".format(args))
             if args[0] not in HBNBCommand.__classes:
                 print("** class doesn't exist **")
                 return []
