@@ -105,6 +105,7 @@ class HBNBCommand(cmd.Cmd):
         all instances based or not on the class name.
         """
         objs = models.storage.all()
+        inst_list = []
         if line:
             args = self.command_args(line)
             if args:
