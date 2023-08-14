@@ -31,6 +31,11 @@ class TestFileStorage(unittest.TestCase):
             pass
         FileStorage._FileStorage__objects = {}
 
+    def test_object(self):
+        """check the objectvariable"""
+        self.inst._FileStorage__objects = []
+        self.assertEqual(self.inst._FileStorage__objects, [])
+
     def test_inst_type(self):
         """test the type if it is FileStorgae"""
         self.assertEqual(type(FileStorage()), FileStorage)
