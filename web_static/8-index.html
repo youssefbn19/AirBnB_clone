@@ -1,140 +1,127 @@
 <!DOCTYPE html>
-<html lang="ang">
-    <head>
-        <title>Airbnb Clone</title>
-        <link rel="stylesheet" href="./styles/3-common.css">
-        <link rel="stylesheet" href="./styles/3-footer.css">
-        <link rel="stylesheet" href="./styles/3-header.css">
-        <link rel="stylesheet" href="./styles/6-filters.css">
-        <link rel="stylesheet" href="./styles/8-places.css">
-        <link rel="stylesheet"
-        href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
-        integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
-        crossorigin="anonymous">
-        <link rel="icon" type="image/x-icon" href="/web_static/images/icon.png">
-    </head>
-    <body>
-        <header>
-        </header>
-        <div class="container">
-            <section class="filters">
-                    <div class="locations">
-                        <h3>States</h3>
-                        <h4>California, Arizona...</h4>
-                        <ul class="popover">
-                            <h2>California:</h2>
-                            <li>page</li>
-                            <li>page2</li>
-                        
-                        <h2>Arizona:</h2>
-                        
-                            <li>page</li>
-                            <li>page2</li>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/4-common.css">
+    <link rel="stylesheet" href="styles/3-header.css">
+    <link rel="stylesheet" href="styles/3-footer.css">
+    <link rel="stylesheet" href="styles/6-filters.css">
+    <link rel="stylesheet" href="styles/8-places.css">
+    <link rel="shortcut icon" href="images/icon.png" type="image/x-icon">
+    <title>AirBnB Clone</title>
+</head>
+
+<body>
+    <header></header>
+    <div class="container">
+        <section class="filters">
+            <div class="locations">
+                <h3>States</h3>
+                <h4>California, Florida...</h4>
+                <ul class="popover">
+                    <li>
+                        <h2>Ohio:</h2>
+                        <ul class="cities">
+                            <li>Columbus</li>
+                            <li>Cleveland</li>
+                            <li>Cincinnati</li>
                         </ul>
-                    </div>
-                    <div class="amenities">
-                        <h3>Amenities</h3>
-                        <h4>Internet, Kitchen...</h4>
-                        <ul class="popover">
-                            <li>internet</li>
-                            <li>tv</li>
-                            <li>Kitchen</li>
-                            <li>iron</li>
+                    </li>
+                    <li>
+                        <h2>Florida:</h2>
+                        <ul class="cities">
+                            <li>Jacksonville</li>
+                            <li>Miami</li>
+                            <li>Tampa</li>
                         </ul>
-                    </div>
-                        
-                <button>Search</button>
-            </section>
-            <section class="places">
-                <h1>Places</h1>
-                <div class="places_holder">
-                    <article>
-                        <div class="details">
-                            <h2>My home</h2>
-                            <div class="price_by_night">
-                                <h1>$67</h1>
-                            </div>
-                        </div>
-                        <div class="information">
-                            <div class="max_guest">
-                                <i class="fa fa-users fa-3x" aria-hidden="true"></i>
-                                <p>1 Guests</p>
-                            </div>
-                            <div class="number_rooms">
-                                <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
-                                <p>1 bedroom</p>
-                            </div>
-                            <div class="number_bathrooms">
-                                <i class="fa fa-bath fa-3x" aria-hidden="true"></i>
-                                <p>1 Bathroom</p>
-                            </div>
-                        </div>
-                        <div class="user">
-                            <p><b>Owner:</b> Hamza bouhali</p>
-                        </div>
-                        <div>
-                            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In nulla et distinctio labore non excepturi, recusandae, impedit culpa facilis neque cumque sed ipsum. Vero saepe, atque dicta quibusdam magnam ab.</p>
-                        </div>
-                    </article>
-                    <article>
-                        <div class="details">
-                        <h2>Tiny house</h2>
-                        <div class="price_by_night">
-                            <h1>$67</h1>
-                        </div>
-                    </div>
+                    </li>
+                </ul>
+            </div>
+            <div class="amenities">
+                <h3>Amenities</h3>
+                <h4>Jacuzzi, WIFI...</h4>
+                <ul class="popover">
+                    <li>WIKI</li>
+                    <li>Smart locks</li>
+                    <li>Pet-friendly</li>
+                    <li>Free parking</li>
+                    <li>Hot tub</li>
+                </ul>
+            </div>
+            <button type="button">Search</button>
+        </section>
+        <section class="places">
+            <h1>Places</h1>
+            <div class="place_container">
+                <article>
+                    <h2>My Home</h2>
+                    <div class="price_by_night">$80</div>
                     <div class="information">
                         <div class="max_guest">
-                            <i class="fa fa-users fa-3x" aria-hidden="true"></i>
-                            <p>1 Guests</p>
+                         2 Guests
                         </div>
                         <div class="number_rooms">
-                            <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
-                            <p>1 bedroom</p>
+                            1 bedroom
                         </div>
                         <div class="number_bathrooms">
-                            <i class="fa fa-bath fa-3x" aria-hidden="true"></i>
-                            <p>1 Bathroom</p>
+                            1 bathroom
                         </div>
                     </div>
                     <div class="user">
-                        <p><b>Owner:</b> Hamza bouhali</p>
+                        <span>Owner: </span>John Lennon
                     </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In nulla et distinctio labore non excepturi, recusandae, impedit culpa facilis neque cumque sed ipsum. Vero saepe, atque dicta quibusdam magnam ab.</p>
-                    </div></article>
-                    <article>
-                        <div class="details">
-                        <h2>A suite</h2>
-                        <div class="price_by_night">
-                            <h1>$67</h1>
-                        </div>
+                    <div class="description">
+                        This is a lovely 1 bedroom and 1 bathroom apartement that can accomodate 2 people. It locates at the center of Shanghai and next to subway line 1. 1 stop to People Square, 2 stops to Bund, 3 stops to Jingan Temple.
                     </div>
+                </article>
+                <article>
+                    <h2>Tiny House</h2>
+                    <div class="price_by_night">$80</div>
                     <div class="information">
                         <div class="max_guest">
-                            <i class="fa fa-users fa-3x" aria-hidden="true"></i>
-                            <p>1 Guests</p>
+                        4 Guests
                         </div>
                         <div class="number_rooms">
-                            <i class="fa fa-bed fa-3x" aria-hidden="true"></i>
-                            <p>1 bedroom</p>
+                        2 bedrooms
                         </div>
                         <div class="number_bathrooms">
-                            <i class="fa fa-bath fa-3x" aria-hidden="true"></i>
-                            <p>1 Bathroom</p>
+                        1 bathroom
                         </div>
                     </div>
                     <div class="user">
-                        <p><b>Owner:</b> Hamza bouhali</p>
+                        <span>Owner: </span>Adrienne
                     </div>
-                    <div>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. In nulla et distinctio labore non excepturi, recusandae, impedit culpa facilis neque cumque.</p>
-                    </div></article>
-                </div>
-            </section>
-        </div>
-        <footer>
-            <p>Best School</p>
-        </footer>
-    </body>
+                    <div class="description">
+                        Our place is a private, affordable stand-alone guest house centrally located just minutes to French Quarters, downtown, the Fair Grounds (Jazz Fest) and City Park. The guest house is a quaint, 400 square ft. with a full bath, mini kitchen, & living room. The extra high ceiling make the home feel more spacious. The sofa converts to a bed also. We have a hand made counter area that adds character to the room and a great porch/deck to relax on and have a glass of Merlot.
+                    </div>
+                </article>
+                <article>
+                    <h2>Heartwood Cabin</h2>
+                    <div class="price_by_night">$190</div>
+                    <div class="information">
+                        <div class="max_guest">
+                        6 Guests
+                        </div>
+                        <div class="number_rooms">
+                        3 bedrooms
+                        </div>
+                        <div class="number_bathrooms">
+                        1 bathroom
+                        </div>
+                    </div>
+                    <div class="user">
+                        <span>Owner: </span>Nick
+                    </div>
+                    <div class="description">
+                    Welcome to Heartwood Cabin, our brand new custom A-Frame located in a small community off Canon Rd in Packwood. The beautiful Cowlitz River will greet you on the right shortly after you turn into the neighborhood and on a clear day views of towering Butter Peak can be had as you pull into the cabin drive. Heartwood includes a cedar hot tub, large kitchen, WiFi, 2 bathrooms, a full laundry room, and more. We're located 10 mins from town and 30 mins from White Pass.
+                    </div>
+                </article>
+            </div>
+        </section>
+    </div>
+    <footer>Best School</footer>
+</body>
+
 </html>

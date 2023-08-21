@@ -1,29 +1,27 @@
-.container{
-    max-width: 1000px;
-    margin-top: 30px;
-    margin-left: auto;
-    margin-right: auto;
-}
-.filters{
-    color: white;
+.container .filters{
+    position: relative;
+    background-color: #fff;
     height: 70px;
     width: 100%;
     border: 1px solid #ddd;
     border-radius: 4px;
     display: flex;
     align-items: center;
-    justify-content: right;
 }
-button{
+
+.container .filters button
+{
+    position: absolute;
+    right: 30px; 
     font-size: 18px;
     background-color: #FF5A5F;
-    color: #FFF;
+    color: #fff;
     height: 48px;
     width: 20%;
-    border:none;
     border-radius: 4px;
-    margin-right: 30px;
+    border: none;
 }
-button:hover{
-    opacity: 90%;
+.container .filters button:hover
+{
+    opacity: 0.9;
 }
