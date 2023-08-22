@@ -1,0 +1,33 @@
+*{
+	padding: 0px;
+	margin: 0px;
+	box-sizing: border-box;
+}
+ol, ul {
+	list-style: none;
+}
+body {
+    margin: 0px;
+    padding: 0px;
+    color: #484848;
+    font-size: 14px;
+    font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+html
+{
+	position: relative;
+}
+div.container{
+	max-width: 1000px;
+	margin: 30px auto;
+}
+@media only screen and (max-width: 767px){
+	div.container{
+		margin: 30px 20px;
+	}
+}
+@media only screen and (max-width: 375px){
+	div.container{
+		margin: 15px 10px;
+	}
+}
