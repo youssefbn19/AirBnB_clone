@@ -1,0 +1,14 @@
+header {
+    background-color: #ffffff;
+    height: 70px;
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    background: url(../images/logo.png) no-repeat 20px center;
+}
+
+@media only screen and (max-width: 425px){
+    header{
+        background-size: 25%;
+        height: 50px;
+    }
+}
